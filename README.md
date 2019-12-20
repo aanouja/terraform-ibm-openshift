@@ -73,7 +73,7 @@ The following figure illustrates the deployment architecture for the 'OpenShift 
 * Provision the infrastructure using the following command
 
    ``` console
-    $ make rhn_username=<rhn_username> rhn_password=<rhn_password> infrastructure
+    $ make rhn_username=<rhn_username> rhn_password=<rhn_password> ibm_sl_username=<ibm_sl_username> ibm_sl_api_key=<ibm_sl_api_key> infrastructure
    ```
 Please provide softlayer username , password and ssh public key to proceed.
 
