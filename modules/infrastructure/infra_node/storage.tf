@@ -5,8 +5,8 @@ resource "ibm_storage_block" "infranode_block" {
   count          = "${var.infra_node_count}"
   type           = "${var.block_storage_type}"
   datacenter     = "${var.datacenter}"
-  capacity       = 500
-  iops           = 1000
+  capacity       = 150
+  iops           = 2
   os_format_type = "Linux"
   hourly_billing = "${var.hourly_billing}"
   allowed_virtual_guest_ids  = ["${element(ibm_compute_vm_instance.infranode.*.id,count.index)}"]

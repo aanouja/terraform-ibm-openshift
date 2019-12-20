@@ -3,10 +3,10 @@
 #################################################
 resource "ibm_storage_block" "masternode_block" {
   count          = "${var.master_node_count}"
-  type           = "Performance"
+  type           = "Endurance"
   datacenter     = "${var.datacenter}"
-  capacity       = 500
-  iops           = 1000
+  capacity       = 150
+  iops           = 2
   os_format_type = "Linux"
   hourly_billing = "${var.hourly_billing}"
   allowed_virtual_guest_ids  = ["${element(ibm_compute_vm_instance.masternode.*.id,count.index)}"]

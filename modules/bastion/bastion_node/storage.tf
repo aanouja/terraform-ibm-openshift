@@ -6,8 +6,8 @@
 resource "ibm_storage_block" "bastionnode_block" {
   type           = "${var.block_storage_type}"
   datacenter     = "${var.datacenter}"
-  capacity       = 2000
-  iops           = 4000
+  capacity       = 150
+  iops           = 2
   os_format_type = "Linux"
   hourly_billing = "${var.hourly_billing}"
   allowed_virtual_guest_ids  = ["${ibm_compute_vm_instance.bastion.id}"]

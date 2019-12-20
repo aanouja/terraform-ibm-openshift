@@ -4,7 +4,7 @@ variable "hourly_billing" {
 }
 
 variable "datacenter" {
-  default = "lon06"
+  default = "fra02"
 }
 
 variable "hostname_prefix"{
@@ -29,7 +29,7 @@ variable "app_count" {
 
 variable "storage_count" {
   description = "Set to 0 to configure openshift without glusterfs configuration and 3 or more to configure openshift with glusterfs"
-  default = 0
+  default = 1
 }
 
 variable "ssh_public_key" {
@@ -70,22 +70,22 @@ variable "private_ssh_key"{
 
 variable vlan_count {
   description = "Set to 0 if using existing and 1 if deploying a new VLAN"
-  default = "1"
+  default = "0"
 }
 variable private_vlanid {
   description = "ID of existing private VLAN to connect VSIs"
-  default = "2543851"
+  default = "2550347"
 }
 
 variable public_vlanid {
   description = "ID of existing public VLAN to connect VSIs"
-  default = "2543849"
+  default = "2550345"
 }
 
 ### Flavors to be changed to actual values in '#...'
 
 variable bastion_flavor {
-  default = "B1_4X16X25"
+  default = "B1_1X2X25"
 }
 
 variable master_flavor {

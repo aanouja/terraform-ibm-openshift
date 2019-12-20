@@ -7,7 +7,7 @@ variable "domain" {}
 variable "private_vlan_id" {}
 variable "public_vlan_id" {}
 variable "block_storage_type" {
-    default = "Performance"
+    default = "Endurance"
 }
 variable "hourly_billing" {}
 

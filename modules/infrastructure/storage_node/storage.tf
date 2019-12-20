@@ -5,8 +5,8 @@ resource "ibm_storage_block" "storagenode_block" {
   count          = "${var.storage_node_count * 3}"
   type           = "${var.block_storage_type}"
   datacenter     = "${var.datacenter}"
-  capacity       = 500
-  iops           = 1000
+  capacity       = 150
+  iops           = 2
   os_format_type = "Linux"
   hourly_billing = "${var.hourly_billing}"
   allowed_virtual_guest_ids  = ["${element(ibm_compute_vm_instance.storagenode.*.id,floor(count.index / 3))}"]
