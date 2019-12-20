@@ -3,7 +3,7 @@
 #################################################
 resource "ibm_storage_block" "masternode_block" {
   count          = "${var.master_node_count}"
-  type           = "Endurance"
+  type           = "${var.block_storage_type}"
   datacenter     = "${var.datacenter}"
   capacity       = 150
   iops           = 2
