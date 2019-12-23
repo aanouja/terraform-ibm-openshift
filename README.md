@@ -21,50 +21,27 @@ The following figure illustrates the deployment architecture for the 'OpenShift 
 
 ## Prerequisite
 
-* Docker image for the [Terraform & IBM Cloud Provider](https://github.com/ibm-cloud/terraform-provider-ibm#docker-image-for-the-provider) 
+* Terraform client installed (v 0.11)
 
+* Terraform IBM Cloud Provider plugin installed (v 0.21)
 
+* IBM Cloud account (used to provision resources on IBM Cloud Infrastructure Classic)
 
-* IBM Cloud account (used to provision resources on IBM Cloud Infrastructure or SoftLayer)
+* RedHat Account with openshift subscription
 
-* RedHat Account with openshift subscription.
-
-## Steps to bringup the docker container with IBMCloud Terraform Provider
-
-* Get the latest ibmcloud terraform provider image using the following command:
-    
-    ``` console
-    # Pull the docker image
-    $ docker pull ibmterraform/terraform-provider-ibm-docker
-    ```
-* Bring up the container using the docker image using the following command:
-
-    ``` console
-    # Run the container
-    $ docker run -it ibmterraform/terraform-provider-ibm-docker:latest
-    ```
-    
-## Steps to execute inside the docker container
+* Ssh client
 
 ### 1. Setup the IBM Terraform Openshift Project
 
-* Install ssh package
-
-  ``` console
-    # Install ssh package
-    $ apk add --no-cache openssh
-  ```
-
-* Clone the repo [IBM Terraform Openshift](https://github.com/IBM-Cloud/terraform-ibm-openshift) 
+* Clone the repo [IBM Terraform Openshift](https://github.com/aanouja/terraform-ibm-openshift) 
 
     ``` console
       # Clone the repo
-      $ git clone https://github.com/IBM-Cloud/terraform-ibm-openshift.git
+      $ git clone https://github.com/aanouja/terraform-ibm-openshift.git
       $ cd terraform-ibm-openshift/
     ```
 
 * Generate the private and public key pair which is required to provision the   virtual machines in softlayer.(Put the private key inside ~/.ssh/id_rsa).Follow the instruction [here](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/) to generate ssh key pair
-
 
 ### 2. Provision the IBM Cloud Infrastructure for Red Hat® OpenShift
 
@@ -73,10 +50,10 @@ The following figure illustrates the deployment architecture for the 'OpenShift 
 * Provision the infrastructure using the following command
 
    ``` console
-    $ make rhn_username=<rhn_username> rhn_password=<rhn_password> ibm_sl_username=<ibm_sl_username> ibm_sl_api_key=<ibm_sl_api_key> infrastructure
+    $ export IAAS_CLASSIC_API_KEY="IBM Cloud Classic Infrastructure API Key"
+    $ export IAAS_CLASSIC_USERNAME="IBM Cloud Classic Infrastructure username associated with Classic Infrastructure API KEY".
+    $ make rhn_username=<rhn_username> rhn_password=<rhn_password> infrastructure
    ```
-Please provide softlayer username , password and ssh public key to proceed.
-
 In this version, the following infrastructure elements are provisioned for OpenShift (as illustrated in the picture)
 * Bastion node 
 * Master node 
@@ -95,6 +72,12 @@ On successful completion, you will see the following message
    ```
 
 ### 3. Setup Red Hat® Repositories and images
+
+* Get pool id of your subscription
+
+login to bastion node
+get subscription information
+get pool id from previous command
 
 * Install the repos and images by running :
 
