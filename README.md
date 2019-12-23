@@ -21,9 +21,10 @@ The following figure illustrates the deployment architecture for the 'OpenShift 
 
 ## Prerequisite
 
-* Terraform client installed (v 0.11)
-
-* Terraform IBM Cloud Provider plugin installed (v 0.21)
+* Terraform with IBM Cloud provider ready, this includes:
+Terraform client installed (v 0.11)
+Terraform IBM Cloud Provider plugin installed (v 0.21)
+More information here: https://github.com/ibm-cloud/terraform-provider-ibm
 
 * IBM Cloud account (used to provision resources on IBM Cloud Infrastructure Classic)
 
